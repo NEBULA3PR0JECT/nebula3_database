@@ -13,10 +13,13 @@ class MOVIE_DB:
         config = NEBULA_CONF()
         self.db_host = config.get_database_host()
         self.database = config.get_database_name()
-        gdb = DatabaseConnector()
-        self.db = gdb.connect_db(self.database)
-        self.gdb = gdb
+        self.gdb = DatabaseConnector()
+        self.db = self.gdb.connect_db(self.database)
     
+    def change_db(self, dbname):
+        self.database(dbname)
+        self.db = self.gdb.connect_db(self.database)
+
     def get_all_movies(self):
         nebula_movies = []
         query = 'FOR doc IN Movies RETURN doc'
@@ -25,7 +28,7 @@ class MOVIE_DB:
             nebula_movies.append(data['_id'])
         return(nebula_movies)
     
-    def get_movie_metadata(self, movie_id):
+    def get_movie(self, movie_id):
         query = 'FOR doc IN Movies FILTER doc._id == "{}" RETURN doc'.format(movie_id)
         cursor = self.db.aql.execute(query)
         for data in cursor:
@@ -52,11 +55,28 @@ class MOVIE_DB:
             results.update(doc)
         return (results)
 
-    def get_scene_elements(self, m):
-        query_r = 'FOR doc IN StoryLine FILTER doc.arango_id == "{}" RETURN doc'.format(m)
-        cursor_r = self.db.aql.execute(query_r)
+    def get_scene_elements(self, movie_id):
+        query = 'FOR doc IN Movies FILTER doc._id == "{}" RETURN doc'.format(movie_id)
+        cursor = self.db.aql.execute(query)
         stages = []
-        for stage in cursor_r:
-            stages.append(stage)
+        for  movie in cursor:
+            for scene_element in movie['scene_elements']:
+                stages.append(scene_element)
         return(stages)
-        
+    
+    def get_mdfs(self, movie_id):
+        query = 'FOR doc IN Movies FILTER doc._id == "{}" RETURN doc'.format(movie_id)
+        cursor = self.db.aql.execute(query)
+        stages = []
+        for  movie in cursor:
+            for scene_element in movie['mdfs']:
+                stages.append(scene_element)
+        return(stages)
+    
+    def get_movie_metadata(self, movie_id):
+        query = 'FOR doc IN Movies FILTER doc._id == "{}" RETURN doc'.format(movie_id)
+        cursor = self.db.aql.execute(query)
+        stages = []
+        for  movie in cursor:
+            stages.append(movie['meta'])
+        return(stages)
