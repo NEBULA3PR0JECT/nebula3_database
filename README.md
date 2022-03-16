@@ -10,3 +10,4 @@ Structure:
 9. Dockerfile - docker image definition
 10. run.sh - image entry point
 11. environment.yaml - python dependencies
+12. DockerHub pull: dsivov/nebula3_database:latest
