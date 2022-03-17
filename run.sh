@@ -1,5 +1,5 @@
 #!/bin/bash
-source activate nebula_databas 
+source activate nebula_database 
 export SHELL=/bin/bash
 rm -rf /storage/lost+found
 export PYTHONPATH=/notebooks/

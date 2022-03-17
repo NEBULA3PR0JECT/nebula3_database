@@ -1,6 +1,3 @@
-import os
-import time
-import urllib
 from database.arangodb import DatabaseConnector
 from config import NEBULA_CONF
 
@@ -80,3 +77,35 @@ class MOVIE_DB:
         for  movie in cursor:
             stages.append(movie['meta'])
         return(stages)
+    
+    def get_movie_info(self, arango_id):
+        """
+        Get scenes for movie , you can find related scene element by comparing your start/stop and start/stop from database.
+        @param: arango_id: movie ID including path, e.g. Movies/12345678
+        """
+        # query DB for all relevant scenes
+        query = 'FOR doc IN Movies FILTER doc._id == "{}"  RETURN doc'.format(arango_id)
+        cursor = self.db.aql.execute(query)
+        
+        # iterate DB output and save scenes info.
+        all_infos = []
+        for data in cursor:
+            all_infos.append({
+                'arango_id': data['_id'],            # same as param
+                'description': data['description'],  # random identifier
+                'fps': data['meta']['fps'],          # movie file metadata
+                'width': data['meta']['width'],
+                'height': data['meta']['height'],
+                'last frame': data['last_frame'],
+                'movie_id': data['movie_id'],        # random identifier
+                'mdfs': data['mdfs'],
+                'scene_elements': data['scene_elements']
+            })
+
+        num_movies_found = len(all_infos)
+        if num_movies_found > 1:
+            print(f'found several movies with id {arango_id}: {all_infos}')
+        elif num_movies_found == 0:
+            raise ValueError(f'No moveis found with id {arango_id}')
+
+        return all_infos[0]
