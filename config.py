@@ -14,6 +14,7 @@ class NEBULA_CONF:
         self.S3BUCKET = os.getenv('S3BUCKET', "nebula-frames")
         self.MLV_SERVER = os.getenv('MLV_SERVER', 'ec2-3-123-129-35.eu-central-1.compute.amazonaws.com')
         self.MLV_PORT = os.getenv('MLV_PORT', '19530')  # default value
+        self.WEB_SERVER = os.getenv('WEB_SERVER', 'http://ec2-18-159-140-240.eu-central-1.compute.amazonaws.com:7000/')
 
     def get_database_name(self):
         return(self.ARANGO_DB)
@@ -36,3 +37,6 @@ class NEBULA_CONF:
         
     def get_milvus_server(self):
         return(self.MLV_SERVER, self.MLV_PORT)
+    
+    def get_webserver(self):
+        return(self.WEB_SERVER)
