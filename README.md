@@ -5,7 +5,7 @@ Structure:
 2. database/milvus.py - API for vector database client
 5. notebooks/ -  test and play notebooks 
 6. movie_graph.py - Graph API
-7. movie_db.py - API for movie metadata, stored in document db
+7. movie_db.py and movie_s3.py - API for movie metadata, stored in document db, s3 storage for frames
 8. config.py - database connection settings
 9. Dockerfile - docker image definition
 10. run.sh - image entry point
