@@ -1,4 +1,3 @@
-from database.arangodb import DatabaseConnector
 from config import NEBULA_CONF
 import os
 import boto3
@@ -7,10 +6,6 @@ class MOVIE_S3:
     def __init__(self):
         #self.connect_db("nebula_development")
         config = NEBULA_CONF()
-        self.db_host = config.get_database_host()
-        self.database = config.get_database_name()
-        self.gdb = DatabaseConnector()
-        self.db = self.gdb.connect_db(self.database)
         self.download_bucket_name = "nebula-frames"
         self.s3 = boto3.client('s3', region_name='eu-central-1')
     
