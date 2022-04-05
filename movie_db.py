@@ -89,13 +89,13 @@ class MOVIE_DB:
             stages.append(movie['meta'])
         return(stages)
 
-    def get_movie_info(self, arango_id):
+    def get_movie_info(self, movie_id):
         """
         Get scenes for movie , you can find related scene element by comparing your start/stop and start/stop from database.
         @param: arango_id: movie ID including path, e.g. Movies/12345678
         """
         # query DB for all relevant scenes
-        query = 'FOR doc IN Movies FILTER doc._id == "{}"  RETURN doc'.format(arango_id)
+        query = 'FOR doc IN Movies FILTER doc._id == "{}"  RETURN doc'.format(movie_id)
         cursor = self.db.aql.execute(query)
 
         # iterate DB output and save scenes info.
@@ -115,8 +115,8 @@ class MOVIE_DB:
 
         num_movies_found = len(all_infos)
         if num_movies_found > 1:
-            print(f'found several movies with id {arango_id}: {all_infos}')
+            print(f'found several movies with id {movie_id}: {all_infos}')
         elif num_movies_found == 0:
-            raise ValueError(f'No moveis found with id {arango_id}')
+            raise ValueError(f'No moveis found with id {movie_id}')
 
         return all_infos[0]
