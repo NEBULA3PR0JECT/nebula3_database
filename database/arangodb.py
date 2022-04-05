@@ -1,5 +1,8 @@
+import sys
 from arango import ArangoClient
-from config import NEBULA_CONF
+
+sys.path.append('../')
+from ..config import NEBULA_CONF
 
 class DatabaseConnector():
     def __init__(self):
@@ -32,13 +35,13 @@ class DatabaseConnector():
             sys_db.delete_database(dbname)
 
 #For testing
-def main():
-    print()
-    #
-    vtdb = DatabaseConnector()
-    #vtdb.delete_db()
-    #vtdb.init_nebula_db('nebula_development')
-    db = vtdb.connect_db('nebula_development')
+# def main():
+#     print()
+#     #
+#     vtdb = DatabaseConnector()
+#     #vtdb.delete_db()
+#     #vtdb.init_nebula_db('nebula_development')
+#     db = vtdb.connect_db('nebula_development')
     
 
 if __name__ == '__main__':
