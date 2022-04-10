@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
     /opt/conda/bin/conda install conda-build && \
-    conda env create -f environment.yaml && \
+    conda env create -f environment.yml && \
     conda clean --all -y 
 # Create Environment
 WORKDIR /notebooks
