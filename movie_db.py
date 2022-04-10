@@ -1,5 +1,5 @@
-from .database.arangodb import DatabaseConnector
-from .config import NEBULA_CONF
+from database.arangodb import DatabaseConnector
+from config import NEBULA_CONF
 
 
 
@@ -50,7 +50,7 @@ class MOVIE_DB:
         cursor = self.db.aql.execute(query)
         for data in cursor:
             #print(data)
-            url = data
+            url = datap
         #print(url)
         return(url)
 
