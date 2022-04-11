@@ -50,7 +50,7 @@ class MOVIE_DB:
         cursor = self.db.aql.execute(query)
         for data in cursor:
             #print(data)
-            url = datap
+            url = data
         #print(url)
         return(url)
 
