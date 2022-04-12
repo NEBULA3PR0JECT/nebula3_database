@@ -17,7 +17,7 @@ class MOVIE_DB:
             self.db = self.gdb.connect_db(self.database)
 
     def change_db(self, dbname):
-        self.database(dbname)
+        self.database = dbname
         self.db = self.gdb.connect_db(self.database)
 
     def get_all_movies(self):
