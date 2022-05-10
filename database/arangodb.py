@@ -1,8 +1,8 @@
 import sys
 from arango import ArangoClient
 
-sys.path.append('../')
-from ..config import NEBULA_CONF
+#sys.path.append('../')
+from config import NEBULA_CONF
 
 class DatabaseConnector():
     def __init__(self):

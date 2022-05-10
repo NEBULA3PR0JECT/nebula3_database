@@ -7,6 +7,8 @@ class NEBULA_CONF:
         self.ARANGO_PORT = os.getenv('ARANGO_PORT', '8529')
         self.ARANGO_PROXY_PORT = os.getenv('ARANGO_PROXY_PORT', '80')
         self.ARANGO_DB = os.getenv('ARANGO_DB', "nebula_development")
+        self.PLAYGROUND_DB = os.getenv('ARANGO_DB', "nebula_playground")
+        self.PRODEMO_DB = os.getenv('ARANGO_DB', "prpdemo")
         self.DEFAULT_ARANGO_USER = os.getenv('DEFAULT_ARANGO_USER')
         self.DEFAULT_ARANGO_PASSWORD = os.getenv('DEFAULT_ARANGO_PASSWORD')
         self.ELASIC_HOST = os.getenv('ELASIC_HOST', 'http://tnnb2_master:NeBuLa_2@ec2-18-158-123-0.eu-central-1.compute.amazonaws.com:9200/')
@@ -19,6 +21,12 @@ class NEBULA_CONF:
     def get_database_name(self):
         return(self.ARANGO_DB)
     
+    def get_playground_name(self):
+        return(self.PLAYGROUND_DB)
+    
+    def get_prodemo_name(self):
+        return(self.PRODEMO_DB)
+
     #http://tnnb2_master:NeBuLa_2@ec2-18-158-123-0.eu-central-1.compute.amazonaws.com:9200/
     def get_elastic_host(self):
         return(self.ELASIC_HOST)
