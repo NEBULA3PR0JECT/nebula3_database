@@ -6,7 +6,7 @@ class NEBULA_CONF:
         self.ARANGO_HOST = os.getenv('ARANGO_HOST', 'ec2-18-158-123-0.eu-central-1.compute.amazonaws.com')
         self.ARANGO_PORT = os.getenv('ARANGO_PORT', '8529')
         self.ARANGO_PROXY_PORT = os.getenv('ARANGO_PROXY_PORT', '80')
-        self.ARANGO_DB = os.getenv('ARANGO_DB', "nebula_development")
+        self.ARANGO_DB = os.getenv('ARANGO_DB', "prodemo")
         self.PLAYGROUND_DB = os.getenv('ARANGO_DB', "nebula_playground")
         self.PRODEMO_DB = os.getenv('ARANGO_DB', "prpdemo")
         self.DEFAULT_ARANGO_USER = os.getenv('DEFAULT_ARANGO_USER')

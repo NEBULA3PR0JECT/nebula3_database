@@ -103,12 +103,12 @@ class MOVIE_DB:
         for data in cursor:
             all_infos.append({
                 'arango_id': data['_id'],            # same as param
-                'description': data['description'],  # random identifier
+                'source': data['source'],  # random identifier
                 'fps': data['meta']['fps'],          # movie file metadata
                 'width': data['meta']['width'],
                 'height': data['meta']['height'],
-                'last frame': data['last_frame'],
-                'movie_id': data['movie_id'],        # random identifier
+                #'last frame': data['last_frame'],
+                'scenes': data['scenes'],        # random identifier
                 'mdfs': data['mdfs'],
                 'scene_elements': data['scene_elements']
             })
