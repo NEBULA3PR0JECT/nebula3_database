@@ -61,6 +61,23 @@ class PLAYGROUND_DB:
             vcomet_data.append(node)
             # print(node)
         return(vcomet_data)
+
+    def get_document(self, document_name):
+        output = []
+        query = f'FOR doc IN {document_name} RETURN doc'
+        cursor = self.db.aql.execute(query)
+        for data in cursor:
+            output.append(data)
+        return(output)
+    
+    def get_movie_info(self, movie_id):
+        output = []
+        query = 'FOR doc IN Movies FILTER doc._id == "{}"  RETURN doc'.format(movie_id)
+        cursor = self.db.aql.execute(query)
+        for data in cursor:
+            output.append(data)
+        return(output)
+
     
     def normalize_movie(self, mid):
         action_data = self.get_all_expert_data("Actions", mid)

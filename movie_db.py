@@ -43,6 +43,14 @@ class MOVIE_DB:
             #print(data)
             metadata = data
         return(metadata)
+    
+    def get_movie_by_filename(self, file_name):
+        query = 'FOR doc IN Movies FILTER doc.File == "{}" RETURN doc._id'.format(file_name)
+        cursor = self.db.aql.execute(query)
+        for data in cursor:
+            print(data)
+            metadata = data
+        return(metadata)
 
     def get_movie_url(self, movie_id):
         url = ""
