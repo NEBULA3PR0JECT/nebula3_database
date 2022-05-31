@@ -1,4 +1,4 @@
-from config import NEBULA_CONF
+from .config import NEBULA_CONF
 import os
 import boto3
 
@@ -8,7 +8,7 @@ class MOVIE_S3:
         config = NEBULA_CONF()
         self.download_bucket_name = "nebula-frames"
         self.s3 = boto3.client('s3', region_name='eu-central-1')
-    
+
     def downloadDirectoryFroms3(self, arango_id):
         """
         Download a movie's directory of frames.
@@ -69,4 +69,3 @@ class MOVIE_S3:
 
         return len(files_downloaded)
 
-    
