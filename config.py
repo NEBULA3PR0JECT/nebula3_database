@@ -2,7 +2,7 @@ import os
 
 class NEBULA_CONF:
     def __init__(self) -> None:
-        
+
         self.ARANGO_HOST = os.getenv('ARANGO_HOST', 'ec2-18-158-123-0.eu-central-1.compute.amazonaws.com')
         self.ARANGO_PORT = os.getenv('ARANGO_PORT', '8529')
         self.ARANGO_PROXY_PORT = os.getenv('ARANGO_PROXY_PORT', '80')
@@ -17,13 +17,14 @@ class NEBULA_CONF:
         self.MLV_SERVER = os.getenv('MLV_SERVER', 'ec2-3-123-129-35.eu-central-1.compute.amazonaws.com')
         self.MLV_PORT = os.getenv('MLV_PORT', '19530')  # default value
         self.WEB_SERVER = os.getenv('WEB_SERVER', 'http://ec2-18-159-140-240.eu-central-1.compute.amazonaws.com:7000/')
+        self.DB_SAVE_BATCH_SIZE = int(os.getenv('DB_SAVE_BATCH_SIZE',10))
 
     def get_database_name(self):
         return(self.ARANGO_DB)
-    
+
     def get_playground_name(self):
         return(self.PLAYGROUND_DB)
-    
+
     def get_prodemo_name(self):
         return(self.PRODEMO_DB)
 
@@ -39,12 +40,15 @@ class NEBULA_CONF:
 
     def get_arango_graphs_host(self):
         return(self.ARANGO_HOST + ':' + self.ARANGO_PROXY_PORT)
-    
+
     def get_s3_bucket(self):
         return(self.S3BUCKET)
-        
+
     def get_milvus_server(self):
         return(self.MLV_SERVER, self.MLV_PORT)
-    
+
     def get_webserver(self):
         return(self.WEB_SERVER)
+
+    def get_db_save_batch_size(self):
+        return(self.DB_SAVE_BATCH_SIZE)
