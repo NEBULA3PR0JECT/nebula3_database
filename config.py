@@ -16,7 +16,7 @@ class NEBULA_CONF:
         self.S3BUCKET = os.getenv('S3BUCKET', "nebula-frames")
         self.MLV_SERVER = os.getenv('MLV_SERVER', 'ec2-3-123-129-35.eu-central-1.compute.amazonaws.com')
         self.MLV_PORT = os.getenv('MLV_PORT', '19530')  # default value
-        self.WEB_SERVER = os.getenv('WEB_SERVER', 'http://ec2-18-159-140-240.eu-central-1.compute.amazonaws.com:7000/')
+        self.WEB_SERVER = os.getenv('WEB_SERVER','')
         self.DB_SAVE_BATCH_SIZE = int(os.getenv('DB_SAVE_BATCH_SIZE',10))
 
     def get_database_name(self):
