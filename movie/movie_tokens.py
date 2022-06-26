@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
-from .database.arangodb import DatabaseConnector
-from .config import NEBULA_CONF
+from database.arangodb import DatabaseConnector
+from config import NEBULA_CONF
 
 @dataclass
 class TokenEntry:

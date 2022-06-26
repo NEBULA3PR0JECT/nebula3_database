@@ -1,4 +1,4 @@
-from .config import NEBULA_CONF
+from config import NEBULA_CONF
 import os
 import boto3
 
