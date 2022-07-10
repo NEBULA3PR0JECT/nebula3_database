@@ -1,4 +1,15 @@
+Please refer to:
+https://testdriven.io/blog/private-pypi/
+
+- pip install twine
 - update version in setup.py
 - python3 setup.py sdist bdist_wheel
-- pip install twine
 - twine upload --repository-url http://74.82.28.99:8090 dist/*
+- remove dist folder
+
+
+- To use:
+  Add to ~/.pip/pip.conf
+  [global]
+  extra-index-url = http://74.82.28.99:8090
+  trusted-host = http://74.82.28.99:8090
